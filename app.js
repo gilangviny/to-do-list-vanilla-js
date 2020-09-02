@@ -6,6 +6,7 @@ const todoList = document.querySelector("#todo-list");
 const clearList = document.querySelector("#clear-todos");
 
 // End Kumpulan element UI
+
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", deleteTodo);
 
@@ -36,18 +37,22 @@ function addTodo(e) {
     // memasukan element li kedalam element todoList
     todoList.appendChild(li);
 
+    todoInput.value = "";
+
 }
 // end function add
 
 
 // function delete todo list
-function deleteTodo (e){
+function deleteTodo(e) {
     e.preventDefault();
 
-    if (e.target.classList.contains("delete-todo")){
-        const parent = e.target.parentElement;
+    if (e.target.classList.contains("delete-todo")) {
 
-        parent.remove();
+        if (confirm("Anda Yakin akan menghapus ini?")) {
+            const parent = e.target.parentElement;
+
+            parent.remove();
+        }
     }
 }
-
